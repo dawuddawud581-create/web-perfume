@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — NAC Perfume</title>
+<meta name="description" content="Selesaikan pesanan parfum premium Anda di NAC Perfume dengan berbagai pilihan pembayaran.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<div id="loading-screen"><div class="loader-mark">NAC</div><div class="loader-sub">Maison de Parfum</div></div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-brand">NAC<small>Perfume Paris · Pekanbaru</small></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">Tentang Kami</a><a href="products.html">Produk</a>
+      <a href="blog.html">Blog</a><a href="contact.html">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Ganti tema"><i class="fa-solid fa-moon"></i></button>
+      <a href="cart.html" class="icon-btn" aria-label="Keranjang"><i class="fa-solid fa-bag-shopping"></i><span class="badge cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-drawer">
+  <div class="mobile-drawer-top"><span class="nav-brand">NAC</span><button class="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button></div>
+  <nav><a href="index.html">Home</a><a href="products.html">Produk</a><a href="cart.html">Keranjang</a><a href="contact.html">Kontak</a></nav>
+</div>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow center">Selesaikan Pesanan</span>
+      <h1 style="margin-top:var(--sp-3);">Checkout</h1>
+      <div class="checkout-steps mt-8">
+        <div class="active"><span class="num">1</span><span class="label">Informasi</span></div>
+        <div class="active"><span class="num">2</span><span class="label">Pengiriman</span></div>
+        <div class="active"><span class="num">3</span><span class="label">Pembayaran</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div id="checkoutEmptyNotice" class="empty-state hidden">
+        <i class="fa-solid fa-bag-shopping"></i><h3>Keranjang Anda kosong</h3>
+        <p>Tambahkan produk terlebih dahulu sebelum checkout.</p>
+        <a href="products.html" class="btn btn-gold mt-6">Belanja Sekarang</a>
+      </div>
+
+      <form id="checkoutForm" class="checkout-layout">
+        <div id="checkoutFormBody">
+          <div class="checkout-block">
+            <h3><span class="num">1</span> Informasi Penerima</h3>
+            <div class="field-row">
+              <div class="field"><label>Nama Lengkap</label><input type="text" id="fName" required placeholder="Nama penerima"></div>
+              <div class="field"><label>Nomor HP</label><input type="tel" id="fPhone" required placeholder="08xxxxxxxxxx" pattern="[0-9+ ]{9,15}"></div>
+            </div>
+            <div class="field"><label>Alamat Lengkap</label><textarea id="fAddress" required placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan"></textarea></div>
+            <div class="field-row">
+              <div class="field"><label>Kota</label><input type="text" id="fCity" required placeholder="Contoh: Pekanbaru Selatan"></div>
+              <div class="field"><label>Provinsi</label><input type="text" id="fProvince" required placeholder="Contoh: DKI Pekanbaru"></div>
+            </div>
+            <div class="field" style="max-width:220px;"><label>Kode Pos</label><input type="text" id="fPostal" required placeholder="12345" pattern="[0-9]{5}"></div>
+          </div>
+
+          <div class="checkout-block">
+            <h3><span class="num">2</span> Pilih Kurir</h3>
+            <label class="courier-opt active"><input type="radio" name="courier" value="jne" data-cost="15000" checked><div><strong>JNE Reguler</strong><span>Estimasi 2-3 hari</span></div><strong>Rp 15.000</strong></label>
+            <label class="courier-opt"><input type="radio" name="courier" value="jnt" data-cost="14000"><div><strong>J&amp;T Express</strong><span>Estimasi 2-4 hari</span></div><strong>Rp 14.000</strong></label>
+            <label class="courier-opt"><input type="radio" name="courier" value="sicepat" data-cost="16000"><div><strong>SiCepat</strong><span>Estimasi 1-2 hari</span></div><strong>Rp 16.000</strong></label>
+            <label class="courier-opt"><input type="radio" name="courier" value="anteraja" data-cost="20000"><div><strong>AnterAja Same Day</strong><span>Estimasi hari ini (Jabodetabek)</span></div><strong>Rp 20.000</strong></label>
+          </div>
+
+          <div class="checkout-block">
+            <h3><span class="num">3</span> Metode Pembayaran</h3>
+            <div class="pay-methods">
+              <label class="pay-opt active"><input type="radio" name="payment" value="qris" checked><i class="fa-solid fa-qrcode"></i><span>QRIS</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="bank"><i class="fa-solid fa-building-columns"></i><span>Transfer Bank</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="dana"><i class="fa-solid fa-wallet"></i><span>DANA</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="ovo"><i class="fa-solid fa-wallet"></i><span>OVO</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="gopay"><i class="fa-solid fa-wallet"></i><span>GoPay</span></label>
+              <label class="pay-opt"><input type="radio" name="payment" value="shopeepay"><i class="fa-solid fa-wallet"></i><span>ShopeePay</span></label>
+            </div>
+
+            <div class="qris-box show" id="qrisBox">
+              <svg viewBox="0 0 100 100" width="150" height="150"><rect width="100" height="100" fill="#fff"/><g fill="#0D0D0D"><rect x="6" y="6" width="22" height="22"/><rect x="72" y="6" width="22" height="22"/><rect x="6" y="72" width="22" height="22"/><rect x="12" y="12" width="10" height="10" fill="#fff"/><rect x="78" y="12" width="10" height="10" fill="#fff"/><rect x="12" y="78" width="10" height="10" fill="#fff"/><rect x="36" y="6" width="6" height="6"/><rect x="48" y="6" width="6" height="6"/><rect x="36" y="18" width="6" height="6"/><rect x="60" y="18" width="6" height="6"/><rect x="36" y="36" width="6" height="6"/><rect x="48" y="36" width="6" height="6"/><rect x="60" y="36" width="6" height="6"/><rect x="72" y="36" width="6" height="6"/><rect x="84" y="36" width="6" height="6"/><rect x="36" y="48" width="6" height="6"/><rect x="60" y="48" width="6" height="6"/><rect x="84" y="48" width="6" height="6"/><rect x="36" y="60" width="6" height="6"/><rect x="48" y="60" width="6" height="6"/><rect x="72" y="60" width="6" height="6"/><rect x="36" y="84" width="6" height="6"/><rect x="48" y="84" width="6" height="6"/><rect x="60" y="72" width="6" height="6"/><rect x="72" y="84" width="6" height="6"/><rect x="84" y="72" width="6" height="6"/></g></svg>
+              <p style="font-size:var(--fs-sm);">Scan kode QRIS di atas menggunakan aplikasi e-wallet atau m-banking favorit Anda.</p>
+            </div>
+            <div class="bank-box" id="bankBox">
+              <p style="font-size:var(--fs-sm); margin-bottom:var(--sp-3);">Transfer ke salah satu rekening berikut, lalu konfirmasi via WhatsApp:</p>
+              <p style="font-weight:600;">BCA — 123 456 7890 a.n. PT NAC Parfum Indonesia</p>
+              <p style="font-weight:600; margin-top:6px;">Mandiri — 098 765 4321 a.n. PT NAC Parfum Indonesia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <h3 style="margin-bottom:var(--sp-5);">Ringkasan Pesanan</h3>
+          <div id="orderReviewItems"></div>
+          <div class="mt-4">
+            <div class="summary-row"><span>Subtotal</span><strong id="sumSubtotal"></strong></div>
+            <div class="summary-row"><span>Diskon</span><strong id="sumDiscount"></strong></div>
+            <div class="summary-row"><span>Ongkos Kirim</span><strong id="sumShipping"></strong></div>
+            <div class="summary-row total"><span>Total Bayar</span><strong id="sumTotal"></strong></div>
+          </div>
+          <button type="submit" class="btn btn-gold btn-block mt-6">Buat Pesanan <i class="fa-solid fa-lock"></i></button>
+          <p style="font-size:var(--fs-xs); color:var(--text-muted); text-align:center; margin-top:var(--sp-4);"><i class="fa-solid fa-shield-halved"></i> Transaksi Anda dienkripsi &amp; aman</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>&copy; <span class="current-year"></span> NAC Perfume. All rights reserved.</span>
+      <div class="payment-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-solid fa-qrcode"></i><i class="fa-solid fa-wallet"></i></div>
+    </div>
+  </div>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div class="success-modal" id="successModal">
+  <div class="success-card">
+    <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+    <h2>Pesanan Berhasil Dibuat!</h2>
+    <p style="font-size:var(--fs-sm);">Terima kasih telah berbelanja di NAC Perfume. Kami akan segera memproses pesanan Anda.</p>
+    <div class="order-num" id="orderNumber"></div>
+    <a href="index.html" class="btn btn-gold btn-block">Kembali ke Beranda</a>
+    <a href="contact.html" class="btn-ghost mt-4" style="justify-content:center; width:100%;">Hubungi Kami via WhatsApp</a>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

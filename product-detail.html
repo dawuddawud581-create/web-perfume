@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Detail Produk — NAC Perfume</title>
+<meta name="description" content="Detail produk parfum NAC — komposisi aroma, ketahanan, dan review pelanggan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<div id="loading-screen"><div class="loader-mark">NAC</div><div class="loader-sub">Maison de Parfum</div></div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-brand">NAC<small>Perfume Paris · Pekanbaru</small></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">Tentang Kami</a><a href="products.html" class="active">Produk</a>
+      <a href="blog.html">Blog</a><a href="contact.html">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn search-trigger" aria-label="Cari produk"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn theme-toggle" aria-label="Ganti tema"><i class="fa-solid fa-moon"></i></button>
+      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="badge wishlist-badge">0</span></a>
+      <a href="cart.html" class="icon-btn" aria-label="Keranjang"><i class="fa-solid fa-bag-shopping"></i><span class="badge cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <div class="mobile-drawer-top"><span class="nav-brand">NAC</span><button class="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button></div>
+  <nav><a href="index.html">Home</a><a href="about.html">Tentang Kami</a><a href="products.html">Produk</a>
+    <a href="wishlist.html">Wishlist</a><a href="testimonials.html">Testimoni</a><a href="blog.html">Blog</a><a href="contact.html">Kontak</a></nav>
+  <div class="mobile-drawer-foot">
+    <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</div>
+
+<div class="search-overlay">
+  <button class="search-close"><i class="fa-solid fa-xmark"></i></button>
+  <div class="search-box"><form onsubmit="return false;"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Cari nama parfum, kategori..."></form><div class="search-results"></div></div>
+</div>
+
+<main class="pd-wrap">
+  <div class="container">
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <div class="pd-layout">
+      <div data-aos="fade-right">
+        <div class="pd-gallery-main" id="galleryMain"></div>
+        <div class="pd-gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+
+      <div class="pd-info" data-aos="fade-left" id="pdInfo">
+        <!-- diisi oleh product-detail.js -->
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="pd-tabs" data-aos="fade-up">
+      <div class="pd-tab-nav">
+        <button class="active" data-tab="desc">Deskripsi</button>
+        <button data-tab="notes">Komposisi Aroma</button>
+        <button data-tab="reviews">Review Pelanggan</button>
+      </div>
+
+      <div class="pd-tab-panel active" data-panel="desc">
+        <p id="fullDescText" style="max-width:760px; font-size:1.05rem; line-height:1.9;"></p>
+        <div class="pd-meta-grid" id="metaGrid" style="max-width:760px;"></div>
+      </div>
+
+      <div class="pd-tab-panel" data-panel="notes">
+        <div class="notes-pyramid" id="notesPyramid"></div>
+        <div class="longevity-bar">
+          <div class="lv-row"><span>Ketahanan Aroma</span><span id="lvLabel"></span></div>
+          <div class="lv-track"><div class="lv-fill" id="lvFill"></div></div>
+        </div>
+      </div>
+
+      <div class="pd-tab-panel" data-panel="reviews">
+        <div class="review-summary" id="reviewSummary"></div>
+        <div id="reviewList"></div>
+        <div class="review-form">
+          <h3 style="margin-bottom:var(--sp-5);">Tulis Review Anda</h3>
+          <form id="reviewForm">
+            <label class="field-hint" style="display:block; margin-bottom:var(--sp-2); text-transform:uppercase; font-size:var(--fs-xs); letter-spacing:.08em; color:var(--text-muted);">Rating Anda</label>
+            <div class="star-input" id="starInput">
+              <i class="fa-solid fa-star" data-v="1"></i><i class="fa-solid fa-star" data-v="2"></i><i class="fa-solid fa-star" data-v="3"></i>
+              <i class="fa-solid fa-star" data-v="4"></i><i class="fa-solid fa-star" data-v="5"></i>
+            </div>
+            <div class="field-row" style="margin-top:var(--sp-5);">
+              <div class="field"><label>Nama Anda</label><input type="text" required placeholder="Nama"></div>
+              <div class="field"><label>Email</label><input type="email" required placeholder="Email"></div>
+            </div>
+            <div class="field"><label>Ulasan</label><textarea required placeholder="Ceritakan pengalaman Anda memakai parfum ini..."></textarea></div>
+            <button type="submit" class="btn btn-gold">Kirim Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="section-sm">
+      <div class="section-head" data-aos="fade-up">
+        <span class="eyebrow">Mungkin Anda Suka</span>
+        <h2>Produk Terkait</h2>
+      </div>
+      <div class="product-grid" id="relatedGrid" data-aos="fade-up" data-aos-delay="100"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><a href="index.html" class="footer-brand">NAC Perfume</a>
+        <small>Maison de parfum premium asal Indonesia. Aroma mewah, tahan lama, untuk setiap jiwa yang percaya diri.</small>
+        <div class="footer-social"><a href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a><a href="https://facebook.com" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="https://wa.me/6281234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a></div>
+      </div>
+      <div class="footer-col"><h4>Tautan Cepat</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">Tentang Kami</a></li><li><a href="products.html">Produk</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Kontak</a></li></ul></div>
+      <div class="footer-col"><h4>Bantuan</h4><ul><li><a href="cart.html">Keranjang</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="testimonials.html">Testimoni</a></li><li><a href="contact.html">Cara Pemesanan</a></li></ul></div>
+      <div class="footer-col"><h4>Newsletter</h4><p style="font-size:var(--fs-sm);">Update koleksi & promo eksklusif.</p><form class="newsletter-form"><input type="email" placeholder="Email Anda" required><button type="submit"><i class="fa-solid fa-paper-plane"></i></button></form></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; <span class="current-year"></span> NAC Perfume. All rights reserved.</span><div class="payment-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-solid fa-qrcode"></i><i class="fa-solid fa-wallet"></i></div></div>
+  </div>
+</footer>
+
+<div class="float-stack">
+  <button class="float-btn top" aria-label="Kembali ke atas"><i class="fa-solid fa-arrow-up"></i></button>
+  <button class="float-btn chat" aria-label="Live Chat"><i class="fa-solid fa-comment-dots"></i></button>
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="float-btn wa" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+<div class="chat-panel">
+  <div class="chat-head"><span class="dot"></span><div><strong>NAC Assistant</strong><span>Biasanya membalas dalam 5 menit</span></div><button aria-label="Tutup chat"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="chat-body"><div class="chat-msg bot">Halo! 👋 Ada pertanyaan soal produk ini?</div></div>
+  <form class="chat-foot" onsubmit="return false;"><input type="text" placeholder="Tulis pesan..."><button type="submit"><i class="fa-solid fa-paper-plane"></i></button></form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/product-detail.js"></script>
+</body>
+</html>

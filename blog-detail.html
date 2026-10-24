@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Artikel — NAC Perfume</title>
+<meta name="description" id="pageDesc" content="Artikel blog NAC Perfume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<div id="loading-screen"><div class="loader-mark">NAC</div><div class="loader-sub">Maison de Parfum</div></div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-brand">NAC<small>Perfume Paris · Pekanbaru</small></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">Tentang Kami</a><a href="products.html">Produk</a>
+      <a href="blog.html" class="active">Blog</a><a href="contact.html">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Ganti tema"><i class="fa-solid fa-moon"></i></button>
+      <a href="cart.html" class="icon-btn" aria-label="Keranjang"><i class="fa-solid fa-bag-shopping"></i><span class="badge cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-drawer">
+  <div class="mobile-drawer-top"><span class="nav-brand">NAC</span><button class="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button></div>
+  <nav><a href="index.html">Home</a><a href="products.html">Produk</a><a href="blog.html">Blog</a><a href="contact.html">Kontak</a></nav>
+</div>
+
+<main>
+  <section class="blog-detail-hero">
+    <div class="container">
+      <span class="tag tag-gold" id="articleTag"></span>
+      <h1 id="articleTitle" style="max-width:760px; margin:0 auto;"></h1>
+      <div class="blog-meta" style="justify-content:center; color:var(--fumee-dark);" id="articleMeta"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="blog-body" id="articleBody"></div>
+      <div class="blog-body">
+        <div class="blog-share">
+          <span style="font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.1em; color:var(--text-muted);">Bagikan:</span>
+          <a href="#" aria-label="Bagikan ke Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Bagikan ke Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://wa.me/?text=" id="shareWa" aria-label="Bagikan ke WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm section-alt">
+    <div class="container">
+      <div class="section-head center"><span class="eyebrow center">Baca Juga</span><h2>Artikel Lainnya</h2></div>
+      <div class="blog-grid" id="relatedArticles"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>&copy; <span class="current-year"></span> NAC Perfume. All rights reserved.</span>
+      <div class="payment-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-solid fa-qrcode"></i><i class="fa-solid fa-wallet"></i></div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-stack">
+  <button class="float-btn top" aria-label="Kembali ke atas"><i class="fa-solid fa-arrow-up"></i></button>
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="float-btn wa" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function loadArticle() {
+    const slug = new URLSearchParams(location.search).get('slug');
+    const a = NAC_DATA.getArticle(slug) || NAC_DATA.articles[0];
+    document.getElementById('pageTitle').textContent = a.title + ' — NAC Perfume';
+    document.getElementById('pageDesc').setAttribute('content', a.excerpt);
+    document.getElementById('articleTag').textContent = a.category;
+    document.getElementById('articleTitle').textContent = a.title;
+    document.getElementById('articleMeta').innerHTML = `<span><i class="fa-regular fa-calendar"></i> ${a.date}</span><span><i class="fa-regular fa-clock"></i> ${a.readTime} baca</span>`;
+    document.getElementById('articleBody').innerHTML = a.content.map(p => `<p>${p}</p>`).join('');
+    document.getElementById('shareWa').href = `https://wa.me/?text=${encodeURIComponent(a.title + ' - NAC Perfume')}`;
+
+    const related = NAC_DATA.articles.filter(x => x.id !== a.id).slice(0, 3);
+    document.getElementById('relatedArticles').innerHTML = related.map(r => `
+      <a href="blog-detail.html?slug=${r.slug}" class="blog-card">
+        <div class="blog-card-media"><i class="fa-solid ${r.icon}"></i></div>
+        <span class="tag tag-outline">${r.category}</span>
+        <h3>${r.title}</h3>
+        <div class="blog-meta"><span><i class="fa-regular fa-calendar"></i> ${r.date}</span></div>
+      </a>`).join('');
+  }
+  document.addEventListener('DOMContentLoaded', loadArticle);
+</script>
+</body>
+</html>
